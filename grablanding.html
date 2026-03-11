@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gr:ab | Founding Host Program</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans (Headlines) & DM Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                        dmsans: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#f9fafb',
+                        surface: '#ffffff',
+                        primary: '#111111',
+                        secondary: '#4b5563',
+                        brand: '#34bb78',
+                        brandHover: '#16a34a',
+                        border: '#e5e7eb',
+                    },
+                    animation: {
+                        'ticker': 'ticker 75s linear infinite',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-container {
+                @apply max-w-[900px] mx-auto px-6 py-[80px];
+            }
+            .btn-primary {
+                @apply bg-primary text-surface font-jakarta font-bold text-[16px] tracking-wide w-full max-w-[440px] mx-auto py-[18px] px-6 rounded-[12px] transition-all duration-300 flex items-center justify-center border-none;
+            }
+            .btn-primary:hover {
+                @apply bg-[#222222] -translate-y-[2px];
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+            .btn-secondary {
+                @apply bg-surface text-primary border border-border font-jakarta font-bold text-[15px] tracking-wide w-full max-w-[440px] mx-auto py-[16px] px-6 rounded-[12px] transition-all duration-200 flex items-center justify-center;
+            }
+            .btn-secondary:hover {
+                @apply border-[#d1d5db] bg-[#f9fafb] -translate-y-[1px];
+            }
+            .grab-card {
+                @apply bg-surface border border-border rounded-[16px] p-[32px_24px] transition-all duration-300;
+            }
+            .grab-card:hover {
+                @apply -translate-y-[2px] shadow-sm;
+                border-color: #d1d5db;
+            }
+            .section-label {
+                @apply text-secondary text-[12px] uppercase tracking-[0.15em] font-bold font-jakarta mb-5 block;
+            }
+            .section-title {
+                @apply font-jakarta font-extrabold text-[32px] md:text-[40px] tracking-tight text-primary leading-[1.15] mb-5;
+            }
+            .section-subtitle {
+                @apply font-dmsans font-normal text-[16px] md:text-[18px] text-secondary leading-[1.65] mb-12 max-w-[600px];
+            }
+
+            /* CSS Personalizat Flip Clock - Realist */
+            .flip-card {
+                @apply relative bg-[#fdfdfd] border border-[#d1d5db] rounded-[10px] w-[56px] h-[80px] md:w-[68px] md:h-[96px] flex items-center justify-center text-[44px] md:text-[56px] font-jakarta font-extrabold text-[#111111] shadow-[0_6px_16px_rgba(0,0,0,0.06)];
+                background-image: linear-gradient(to bottom, #ffffff 0%, #f4f4f5 100%);
+            }
+            .flip-divider {
+                @apply absolute top-1/2 left-0 right-0 h-[2px] bg-[#d1d5db] z-10;
+                box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            }
+            .flip-hinge-left {
+                @apply absolute top-1/2 -left-[4px] w-[6px] h-[14px] bg-gradient-to-b from-[#9ca3af] to-[#6b7280] rounded-r-[3px] -translate-y-1/2 shadow-[inset_-1px_0_2px_rgba(0,0,0,0.3)] z-20;
+            }
+            .flip-hinge-right {
+                @apply absolute top-1/2 -right-[4px] w-[6px] h-[14px] bg-gradient-to-b from-[#9ca3af] to-[#6b7280] rounded-l-[3px] -translate-y-1/2 shadow-[inset_1px_0_2px_rgba(0,0,0,0.3)] z-20;
+            }
+        }
+        
+        body {
+            background-color: #f9fafb;
+            color: #111111;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        main {
+            padding-top: 72px; 
+            padding-bottom: 80px; 
+        }
+        @media (min-width: 768px) {
+            main { padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARA DE NAVIGARE -->
+    <nav class="fixed top-0 inset-x-0 z-[100] bg-surface/95 backdrop-blur-md border-b border-border px-6 py-4 flex justify-between items-center transition-all">
+        <div class="font-jakarta font-extrabold text-[22px] text-primary tracking-tight">
+            gr<span class="text-brand">:</span>ab
+        </div>
+        <a href="#aplica" onclick="openWhatsApp(event)" class="bg-primary text-surface font-jakarta font-bold text-[14px] px-[22px] py-[10px] rounded-full transition-all hover:bg-[#222222] hover:-translate-y-[1px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+            Aplică acum &rarr;
+        </a>
+    </nav>
+
+    <main>
+        <!-- SECȚIUNEA HERO -->
+        <header class="max-w-[760px] mx-auto px-6 pt-[80px] pb-[60px] text-center">
+            
+            <h1 class="font-jakarta font-extrabold text-[42px] md:text-[56px] lg:text-[64px] tracking-tight text-primary leading-[1.1] mb-[28px]">
+                Locul tău de parcare produce bani. Știai?
+            </h1>
+            
+            <p class="font-dmsans font-normal text-[16px] md:text-[20px] text-secondary leading-[1.6] max-w-[600px] mx-auto mb-[50px]">
+                gr:ab transformă spațiile de parcare neutilizate &mdash; garajul tău, curtea, locul de la birou &mdash; într-o sursă de venit pasiv. Șoferii plătesc. Tu încasezi. Noi ne ocupăm de restul.
+            </p>
+
+            <!-- FLIP CLOCK COUNTDOWN CREATIV -->
+            <div class="flex flex-col items-center justify-center gap-4 mb-12">
+                <div class="flex gap-1.5 md:gap-2">
+                    <div class="flip-card">
+                        <div class="flip-divider"></div>
+                        <div class="flip-hinge-left"></div>
+                        <div class="flip-hinge-right"></div>
+                        <span id="flip-tens" class="z-0 relative top-[1px] tracking-tighter">3</span>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-divider"></div>
+                        <div class="flip-hinge-left"></div>
+                        <div class="flip-hinge-right"></div>
+                        <span id="flip-ones" class="z-0 relative top-[1px] tracking-tighter">3</span>
+                    </div>
+                </div>
+                <span class="text-[13px] md:text-[15px] font-jakarta font-bold text-primary uppercase tracking-[0.15em] mt-1">Locuri Rămase</span>
+            </div>
+            
+            <p class="font-dmsans font-medium text-[15px] text-secondary mb-8">
+                <span id="signed-up-count" class="text-primary font-bold">17</span> persoane s-au înscris deja.
+            </p>
+            
+            <button onclick="openWhatsApp(event)" class="btn-primary mb-3">
+                Aplică să devii Founding Host &rarr;
+            </button>
+            <p class="font-dmsans font-normal text-[14px] text-gray-500">
+                Gratuit. Fără angajament. Durează 2 minute.
+            </p>
+        </header>
+
+        <!-- TICKER DE DOVADĂ SOCIALĂ -->
+        <div class="w-full bg-surface border-y border-border h-[48px] overflow-hidden flex items-center relative">
+            <div class="flex w-max animate-ticker whitespace-nowrap items-center text-[15px] font-dmsans font-medium text-secondary">
+                <!-- Set 1 -->
+                <div class="flex items-center">
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Maria din Zorilor s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Andrei din Mănăștur s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Ioana din Gheorgheni s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Cristian din Grigorescu s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Elena din Bună Ziua s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Radu din Florești s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Ana din Iris s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Mihai din Mărăști s-a alăturat ca Founding Host</span>
+                </div>
+                <!-- Set 2 (Duplicat) -->
+                <div class="flex items-center">
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Maria din Zorilor s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Andrei din Mănăștur s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Ioana din Gheorgheni s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Cristian din Grigorescu s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Elena din Bună Ziua s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Radu din Florești s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Ana din Iris s-a alăturat ca Founding Host</span>
+                    <span class="mx-6"><span class="text-gray-300 mr-2">&#9679;</span>Mihai din Mărăști s-a alăturat ca Founding Host</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUM FUNCȚIONEAZĂ -->
+        <section class="section-container pb-[40px]">
+            <span class="section-label">Cum funcționează</span>
+            <h2 class="section-title">Trei pași. Apoi merge singur.</h2>
+            <p class="section-subtitle">Listezi o dată. Câștigi de fiecare dată când cineva parchează. Fără check-in-uri, fără administrare, fără bătăi de cap.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mb-12">
+                <div class="grab-card relative">
+                    <div class="absolute top-8 right-6 font-jakarta font-extrabold text-[20px] text-gray-200">01</div>
+                    <div class="w-[48px] h-[48px] rounded-full bg-gray-100 flex items-center justify-center text-primary mb-6">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Îți listezi spațiul</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Adaugi adresa, orele disponibile și prețul. Durează sub 3 minute. Noi verificăm și aprobăm în aceeași zi.</p>
+                </div>
+                <div class="grab-card relative">
+                    <div class="absolute top-8 right-6 font-jakarta font-extrabold text-[20px] text-gray-200">02</div>
+                    <div class="w-[48px] h-[48px] rounded-full bg-gray-100 flex items-center justify-center text-primary mb-6">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Șoferii te găsesc</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Locul tău apare pe harta gr:ab. Șoferii caută, rezervă și plătesc prin aplicație &mdash; tu nu faci nimic.</p>
+                </div>
+                <div class="grab-card relative">
+                    <div class="absolute top-8 right-6 font-jakarta font-extrabold text-[20px] text-gray-200">03</div>
+                    <div class="w-[48px] h-[48px] rounded-full bg-gray-100 flex items-center justify-center text-primary mb-6">
+                        <i data-lucide="banknote" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Banii ajung la tine</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Fiecare rezervare merge direct în soldul tău. Retragi oricând. Fără facturi, fără urmăriri, fără fricțiuni.</p>
+                </div>
+            </div>
+            
+            <button onclick="openWhatsApp(event)" class="btn-secondary">
+                Vreau să îmi listez locul &rarr;
+            </button>
+        </section>
+
+        <!-- CALCULATORUL DE CÂȘTIG -->
+        <section class="section-container">
+            <span class="section-label">Matematica</span>
+            <h2 class="section-title">O mașină parcată nu te costă nimic.</h2>
+            <p class="section-subtitle">Un loc gol câștigă la fel de puțin. Iată cât ar putea câștiga un host tipic gr:ab în Cluj-Napoca.</p>
+            
+            <div class="grab-card w-full !p-0 overflow-hidden mb-12 border-0 shadow-[0_4px_24px_rgba(0,0,0,0.04)] ring-1 ring-border">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-10 flex flex-col justify-center items-start md:border-r border-border border-b md:border-b-0 bg-[#fafafa]">
+                        <div class="font-jakarta font-extrabold text-[56px] text-primary tracking-tighter leading-[1]">
+                            ~720
+                        </div>
+                        <div class="font-jakarta font-bold text-[18px] text-primary mt-3 tracking-tight">
+                            RON pe lună, pasiv
+                        </div>
+                        <div class="font-dmsans font-normal text-[15px] text-secondary mt-1">
+                            dintr-un singur loc de parcare
+                        </div>
+                    </div>
+                    <div class="flex flex-col bg-white">
+                        <div class="flex justify-between items-center p-6 border-b border-border">
+                            <span class="font-dmsans font-medium text-[16px] text-secondary">Rezervări pe zi</span>
+                            <span class="font-jakarta font-bold text-[16px] text-primary flex items-center gap-2">&rarr; 3&ndash;5</span>
+                        </div>
+                        <div class="flex justify-between items-center p-6 border-b border-border">
+                            <span class="font-dmsans font-medium text-[16px] text-secondary">Durata medie</span>
+                            <span class="font-jakarta font-bold text-[16px] text-primary flex items-center gap-2">&rarr; 2.4 ore</span>
+                        </div>
+                        <div class="flex justify-between items-center p-6 border-b border-border">
+                            <span class="font-dmsans font-medium text-[16px] text-secondary">Tarif mediu</span>
+                            <span class="font-jakarta font-bold text-[16px] text-primary flex items-center gap-2">&rarr; 10 RON/oră</span>
+                        </div>
+                        <div class="flex justify-between items-center p-6">
+                            <span class="font-dmsans font-medium text-[16px] text-primary">Comision Platformă</span>
+                            <span class="font-jakarta font-bold text-[16px] text-primary flex items-center gap-2">&rarr; 0% (primele 6 luni)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="openWhatsApp(event)" class="btn-primary">
+                Află cât ar câștiga locul tău &rarr;
+            </button>
+        </section>
+
+        <!-- AVANTAJELE FOUNDING HOST -->
+        <section id="aplica" class="section-container pt-0">
+            <span class="section-label">De ce să te alături acum</span>
+            <h2 class="section-title">Statutul de Founding Host nu e marketing.</h2>
+            <p class="section-subtitle">Odată ce atingem 50 de locuri, aceste avantaje se închid permanent. Aceștia sunt oamenii care decid ce devine gr:ab.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mb-12">
+                <div class="grab-card relative overflow-hidden bg-[#fafafa]">
+                    <div class="text-primary mb-5">
+                        <i data-lucide="percent" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Păstrezi 100% primele 6 luni.</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Ca Founding Host, păstrezi 100% din tot ce câștigi în primele 6 luni. Fără taxe ascunse, fără comision de platformă pe perioada programului pilot.</p>
+                </div>
+                
+                <div class="grab-card relative overflow-hidden bg-[#fafafa]">
+                    <div class="text-primary mb-5">
+                        <i data-lucide="star" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Prioritate pe hartă.</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Listarea ta apare prima în rezultatele de căutare din cartierul tău. Mai multă vizibilitate înseamnă mai multe rezervări.</p>
+                </div>
+
+                <div class="grab-card">
+                    <div class="text-primary mb-5">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Linie directă cu fondatorii.</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Ai numerele noastre. Cereri de funcționalități, feedback, nemulțumiri &mdash; Founding Hosts au o voce directă în ce construim mai departe.</p>
+                </div>
+
+                <div class="grab-card">
+                    <div class="text-primary mb-5">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-jakarta font-bold text-[20px] text-primary mb-3 tracking-tight">Protecție completă.</h3>
+                    <p class="font-dmsans font-normal text-[15px] text-secondary leading-[1.6]">Fiecare tranzacție este monitorizată. Dacă ceva nu merge bine, rezolvăm noi. Fără dispute interminabile, fără stres.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="border-t border-border mt-10 text-center py-[80px] px-6 bg-white">
+            <h2 class="font-jakarta font-extrabold text-[36px] md:text-[44px] text-primary tracking-tight leading-[1.15] mb-4">Locul tău stă acolo. Acum.</h2>
+            <p class="font-dmsans font-normal text-[16px] md:text-[20px] text-secondary leading-[1.6] max-w-[600px] mx-auto mb-10">Ar putea câștiga bani. Aplică în 2 minute &mdash; noi ne ocupăm de rest.</p>
+            
+            <button onclick="openWhatsApp(event)" class="btn-primary mb-5">
+                Aplică să devii Founding Host &rarr;
+            </button>
+            <p class="font-dmsans font-normal text-[15px] text-secondary">
+                <strong class="text-primary font-bold">17</strong> persoane s-au înscris deja. Au mai rămas doar <span id="final-spots-count" class="font-bold text-primary">33</span> de locuri.
+            </p>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface border-t border-border py-[32px] px-6 text-center pb-[100px] md:pb-[32px]">
+        <div class="font-jakarta font-extrabold text-[18px] text-primary tracking-tight mb-2">
+            gr<span class="text-brand">:</span>ab
+        </div>
+        <p class="font-dmsans font-normal text-[14px] text-secondary mb-1">Platforma de parcare pentru România. Începem din Cluj-Napoca.</p>
+        <p class="font-dmsans font-normal text-[14px] text-gray-400">&copy; 2026 gr:ab &middot; Toate drepturile rezervate</p>
+    </footer>
+
+    <!-- BARA DE CTA FIXĂ PENTRU MOBIL -->
+    <div class="fixed bottom-0 inset-x-0 z-[100] p-4 bg-surface/95 backdrop-blur-md border-t border-border md:hidden flex justify-center shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+        <button onclick="openWhatsApp(event)" class="bg-primary text-surface font-jakarta font-bold tracking-wide text-[16px] w-full py-[16px] rounded-[12px] flex items-center justify-center active:scale-[0.98] transition-transform">
+            Aplică acum pe WhatsApp &rarr;
+        </button>
+    </div>
+
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- SETĂRI MANUALE ---
+            // Modifică acest număr pentru a schimba manual numărul de persoane înscrise.
+            // Locurile rămase din Flip Clock se vor calcula automat (50 - acest număr).
+            const CURRENT_SIGNUPS = 17; 
+            const MAX_SPOTS = 50;
+            // ----------------------
+            
+            // Referințe DOM
+            const signedUpEl = document.getElementById('signed-up-count');
+            const flipTensEl = document.getElementById('flip-tens');
+            const flipOnesEl = document.getElementById('flip-ones');
+            const finalSpotsEl = document.getElementById('final-spots-count');
+
+            function updateDisplay() {
+                const spotsLeft = Math.max(0, MAX_SPOTS - CURRENT_SIGNUPS);
+                
+                if (signedUpEl) signedUpEl.textContent = CURRENT_SIGNUPS;
+                if (finalSpotsEl) finalSpotsEl.textContent = spotsLeft;
+                
+                // Setare Flip Clock
+                const tensString = String(Math.floor(spotsLeft / 10));
+                const onesString = String(spotsLeft % 10);
+
+                if (flipTensEl && flipTensEl.textContent !== tensString) {
+                    flipTensEl.textContent = tensString;
+                }
+                if (flipOnesEl && flipOnesEl.textContent !== onesString) {
+                    flipOnesEl.textContent = onesString;
+                }
+            }
+
+            updateDisplay();
+            lucide.createIcons();
+        });
+
+        function openWhatsApp(e) {
+            e.preventDefault();
+            const msg = encodeURIComponent("Bună ziua, sunt interesat să devin Founding Host gr:ab. Este locul meu eligibil?");
+            window.open(`https://wa.me/40700000000?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
